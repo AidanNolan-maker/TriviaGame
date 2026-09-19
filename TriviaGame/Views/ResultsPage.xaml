@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="TriviaGame.Views.ResultsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Quiz Results">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Quiz Complete!"
+                FontSize="36"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Your Score"
+                FontSize="20"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding ScoreText}"
+                FontSize="48"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding PercentageText, StringFormat='{}{0}'}"
+                FontSize="28"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Play Again"
+                Clicked="PlayAgain_Clicked"
+                HeightRequest="55" />
+
+            <Button
+                Text="Back to Home"
+                Clicked="BackToHome_Clicked"
+                HeightRequest="55" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

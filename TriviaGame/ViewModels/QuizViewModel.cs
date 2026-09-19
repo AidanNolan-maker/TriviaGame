@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using TriviaGame.Models;
 using TriviaGame.Services;
+using TriviaGame.Views;
 
 namespace TriviaGame.ViewModels;
 
@@ -199,7 +200,17 @@ public class QuizViewModel : INotifyPropertyChanged
         }
         else
         {
-            await Shell.Current.GoToAsync("..");
+            QuizResult result = new() {
+                Score = Score,
+                TotalQuestions = TotalQuestions
+            };
+
+            await Shell.Current.GoToAsync(
+                nameof(ResultsPage),
+                new Dictionary<string, object>
+                {
+                    ["Result"] = result
+                });
         }
     }
 
