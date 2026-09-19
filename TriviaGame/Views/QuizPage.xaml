@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="TriviaGame.Views.QuizPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Quiz">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="20">
+
+            <Label
+                Text="{Binding CurrentQuestionNumber, StringFormat='Question {0}'}"
+                FontSize="20"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding CurrentQuestionText}"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center" />
+
+            <Button
+                Text="{Binding Answer1}"
+                Command="{Binding AnswerCommand}"
+                CommandParameter="{Binding Answer1}" />
+
+            <Button
+                Text="{Binding Answer2}"
+                Command="{Binding AnswerCommand}"
+                CommandParameter="{Binding Answer2}" />
+
+            <Button
+                Text="{Binding Answer3}"
+                Command="{Binding AnswerCommand}"
+                CommandParameter="{Binding Answer3}" />
+
+            <Button
+                Text="{Binding Answer4}"
+                Command="{Binding AnswerCommand}"
+                CommandParameter="{Binding Answer4}" />
+
+            <Label
+                Text="{Binding Feedback}"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center" />
+
+            <Label
+                Text="{Binding Score, StringFormat='Score: {0}'}"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
