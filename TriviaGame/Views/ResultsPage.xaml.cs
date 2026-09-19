@@ -16,6 +16,8 @@ public partial class ResultsPage : ContentPage, IQueryAttributable {
     }
 
     private async void PlayAgain_Clicked(object sender, EventArgs e) {
+        await Shell.Current.Navigation.PopToRootAsync();
+
         await Shell.Current.GoToAsync(nameof(QuizPage));
     }
 
