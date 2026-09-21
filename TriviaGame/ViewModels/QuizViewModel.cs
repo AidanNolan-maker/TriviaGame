@@ -4,6 +4,7 @@ using System.Windows.Input;
 using TriviaGame.Models;
 using TriviaGame.Services;
 using TriviaGame.Views;
+using TriviaGame.Data;
 
 namespace TriviaGame.ViewModels;
 
@@ -120,20 +121,20 @@ public class QuizViewModel : INotifyPropertyChanged
 
     public ICommand AnswerCommand { get; }
 
-    public QuizViewModel()
+    public QuizViewModel(TriviaDatabase database)
     {
-        _quizService = new QuizService();
+        _quizService = new QuizService(database);
 
         AnswerCommand = new Command<string>(
             async answer => await SubmitAnswerAsync(answer),
             answer => IsAnswering);
 
-        StartQuiz();
+        _ = StartQuizAsync();
     }
 
-    private void StartQuiz()
+    private async Task StartQuizAsync()
     {
-        _questions = _quizService.GetQuestions(5);
+        _questions = await _quizService.GetQuestionsAsync(5);
 
         _currentQuestionIndex = 0;
         Score = 0;
@@ -150,7 +151,9 @@ public class QuizViewModel : INotifyPropertyChanged
         List<string> answers =
         [
             question.CorrectAnswer,
-            .. question.IncorrectAnswers
+            question.IncorrectAnswer1,
+            question.IncorrectAnswer2,
+            question.IncorrectAnswer3
         ];
 
         answers = answers

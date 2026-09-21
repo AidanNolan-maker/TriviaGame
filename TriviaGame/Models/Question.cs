@@ -10,6 +10,10 @@ public class Question {
     public string Difficulty { get; set; } = string.Empty;
 
     public string CorrectAnswer { get; set; } = string.Empty;
-
-    public List<string> IncorrectAnswers { get; set; } = [];
+    
+    public string IncorrectAnswer1 { get; set; } = string.Empty;
+    
+    public string IncorrectAnswer2 { get; set; } = string.Empty;
+    
+    public string IncorrectAnswer3 { get; set; } = string.Empty;
 }

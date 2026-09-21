@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using TriviaGame.Data;
+using Microsoft.Extensions.Logging;
 
 namespace TriviaGame
 {
@@ -7,6 +9,16 @@ namespace TriviaGame
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+            string databasePath = Path.Combine(
+                FileSystem.AppDataDirectory,
+                "trivia.db3");
+
+            builder.Services.AddDbContext<TriviaDbContext>(options =>
+                options.UseSqlite($"Data Source={databasePath}"));
+
+            builder.Services.AddScoped<TriviaDatabase>();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
